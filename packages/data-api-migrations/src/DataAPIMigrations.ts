@@ -18,6 +18,7 @@ export interface DataAPIMigrationsConfig {
   compiler?: CompilerDerived;
   isLocal?: boolean;
   dataAPI: AuroraDataAPI.Config;
+  tsConfig?: string;
 }
 
 export class DataAPIMigrations {
@@ -29,6 +30,7 @@ export class DataAPIMigrations {
   protected compiler: CompilerDerived
   protected migrationsPath: string
   protected buildPath: string
+  protected tsConfig: string
 
   constructor ({
     cwd,
@@ -37,7 +39,8 @@ export class DataAPIMigrations {
     logger,
     compiler,
     isLocal,
-    dataAPI
+    dataAPI,
+    tsConfig,
   }: DataAPIMigrationsConfig) {
     this.logger = logger
     this.cwd = cwd = cwd || process.cwd()
@@ -47,6 +50,7 @@ export class DataAPIMigrations {
     this.migrationsPath = path.join(this.cwd, migrationsFolder || 'migrations')
     this.buildPath = path.join(this.cwd, '.migrations_build')
     this.dataAPI = new AuroraDataAPI(dataAPI)
+    this.tsConfig = tsConfig
   }
 
   public async generateMigration (name: string): Promise<string> {
@@ -99,7 +103,8 @@ export class DataAPIMigrations {
       cwd: this.cwd,
       migrationsPath: this.migrationsPath,
       buildPath: this.buildPath,
-      logger: this.log.bind(this)
+      logger: this.log.bind(this),
+      tsConfig: this.tsConfig,
     })
     const appliedMigrationIds = await this.getAppliedMigrationIds()
     const files = await compiler.compile()

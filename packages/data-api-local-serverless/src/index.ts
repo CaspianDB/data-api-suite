@@ -16,6 +16,7 @@ class DataAPILocalServerless implements Plugin {
 
     this.hooks = {
       'before:offline:start:init': startHandler,
+      'before:offline:start': startHandler,
       'before:offline:start:end': endHandler,
       'before:migrations:status:init': startHandler,
       'after:migrations:status:end': endHandler,

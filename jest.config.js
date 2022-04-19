@@ -5,5 +5,6 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     'packages/**/src/**/*.ts'
-  ]
+  ],
+  globalSetup: '<rootDir>/jest/globalSetup.js',
 }

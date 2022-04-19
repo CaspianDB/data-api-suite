@@ -9,6 +9,9 @@ const RESOURCE_ARN = 'arn:aws:rds:us-east-1:123456789012:cluster:dummy'
 let server: Server
 let client: RDSDataService
 
+const env = process.env
+env.TZ = 'utc'
+
 // executeStatement helper
 const executeStatement = async (
   sql: string,
@@ -130,6 +133,8 @@ afterAll(async () => {
 })
 
 beforeEach(async () => {
+  jest.resetModules()
+  process.env = { ...env }
   await executeStatement(`DROP TABLE IF EXISTS "users"`)
   await executeStatement(`
     CREATE TABLE "users" (
@@ -143,6 +148,7 @@ beforeEach(async () => {
 
 afterEach(async () => {
   await executeStatement(`DROP TABLE IF EXISTS "users"`)
+  process.env = env
 })
 
 describe('#executeStatement', () => {

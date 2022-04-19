@@ -23,7 +23,7 @@ jest.mock('data-api-migrations', () => {
   }
 })
 
-const serverless = new Serverless()
+const serverless = new Serverless({ commands: [], options: {} })
 serverless.cli = new class CLI {
   log (message: string): null {
     mockedLog(message)

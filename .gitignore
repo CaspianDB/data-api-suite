@@ -5,3 +5,5 @@ npm-debug.log
 packages/*/lib
 tsconfig.build.tsbuildinfo
 .DS_Store
+.npmrc
+.env

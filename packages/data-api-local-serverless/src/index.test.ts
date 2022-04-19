@@ -11,7 +11,7 @@ jest.mock('data-api-local', () => ({
   dataApiLocal: jest.fn(() => mockedServerInstance)
 }))
 
-const serverless = new Serverless()
+const serverless = new Serverless({ commands: [], options: {} })
 serverless.cli = new class CLI {
   log (): null {
     return null

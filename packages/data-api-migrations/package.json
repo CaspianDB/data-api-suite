@@ -1,5 +1,5 @@
 {
-  "name": "data-api-migrations",
+  "name": "@caspiandb/data-api-migrations",
   "version": "1.0.0-alpha.3",
   "description": "Migrations library for Aurora Serverless Data API.",
   "homepage": "https://github.com/marcgreenstock/data-api-suite/tree/master/packages/data-api-migrations",
@@ -35,5 +35,8 @@
     "@types/jest": "^24.9.1",
     "@types/lodash": "^4.14.149",
     "@types/node": "^13.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

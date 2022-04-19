@@ -24,7 +24,8 @@ class DataAPIMigrationsServerless implements Plugin {
       stage: {
         usage: 'The stage e.g. (local, dev, staging, prod, etc.)',
         required: false,
-        default: 'local'
+        default: 'local',
+        type: 'string',
       }
     }
 
@@ -43,7 +44,8 @@ class DataAPIMigrationsServerless implements Plugin {
               name: {
                 usage: 'Name of the migration e.g. sls migration create --name createUsersTable',
                 required: true,
-                shortcut: 'n'
+                shortcut: 'n',
+                type: 'string,'
               }
             }
           },
@@ -117,7 +119,8 @@ class DataAPIMigrationsServerless implements Plugin {
     const {
       migrationsFolder = './migrations',
       typescript = true,
-      [this.stage]: dataAPI
+      [this.stage]: dataAPI,
+      tsConfig,
     } = baseConfig
     if (dataAPI === undefined) {
       throw new Error(`"custom"."DataAPIMigrations"."${this.stage}" is missing from serverless.yml`)
@@ -125,7 +128,8 @@ class DataAPIMigrationsServerless implements Plugin {
     return {
       migrationsFolder,
       typescript,
-      dataAPI
+      dataAPI,
+      tsConfig,
     }
   }
 
