@@ -1,7 +1,7 @@
 import * as Serverless from 'serverless'
 import * as Plugin from 'serverless/classes/Plugin'
 import * as chalk from 'chalk'
-import { dataApiLocal, Server, ServerOptions } from 'data-api-local'
+import { dataApiLocal, Server, ServerOptions } from '@caspiandb/data-api-local'
 
 class DataAPILocalServerless implements Plugin {
   public hooks: Plugin.Hooks

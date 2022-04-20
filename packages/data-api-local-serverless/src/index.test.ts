@@ -1,12 +1,12 @@
 import * as Serverless from 'serverless'
 import DataAPILocalServerless = require('.')
-import { dataApiLocal } from 'data-api-local'
+import { dataApiLocal } from '@caspiandb/data-api-local'
 
 const mockedServerInstance = {
   stop: jest.fn()
 }
 
-jest.mock('data-api-local', () => ({
+jest.mock('@caspiandb/data-api-local', () => ({
   __esModule: true,
   dataApiLocal: jest.fn(() => mockedServerInstance)
 }))

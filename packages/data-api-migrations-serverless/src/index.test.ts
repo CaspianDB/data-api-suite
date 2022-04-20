@@ -1,6 +1,6 @@
 import * as Serverless from 'serverless'
 import DataAPIMigrationsServerless = require('.')
-import DataAPIMigrations from 'data-api-migrations'
+import DataAPIMigrations from '@caspiandb/data-api-migrations'
 import * as chalk from 'chalk'
 
 const generateMigrationMock = jest.fn((fileName: string) => Promise.resolve(fileName))
@@ -9,7 +9,7 @@ const rollbackMigrationsMock = jest.fn(() => Promise.resolve([1]))
 const getAppliedMigrationIds = jest.fn(() => Promise.resolve([1, 2]))
 const mockedLog = jest.fn()
 
-jest.mock('data-api-migrations', () => {
+jest.mock('@caspiandb/data-api-migrations', () => {
   return {
     __esModule: true,
     default: jest.fn().mockImplementation(() => {

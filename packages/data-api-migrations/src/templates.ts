@@ -23,7 +23,7 @@ exports.down = async (dataAPI, migration) => {
 `
 
 export const tsTemplate = (): string => 
-`import { MigrationFn } from 'data-api-migrations'
+`import { MigrationFn } from '@caspiandb/data-api-migrations'
 
 export const up: MigrationFn = async (dataAPI, migration) => {
   const t = await dataAPI.beginTransaction()

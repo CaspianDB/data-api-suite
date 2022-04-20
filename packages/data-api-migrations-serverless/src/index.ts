@@ -3,7 +3,7 @@ import * as Plugin from 'serverless/classes/Plugin'
 import * as chalk from 'chalk'
 import DataAPIMigrations, {
   DataAPIMigrationsConfig
-} from 'data-api-migrations'
+} from '@caspiandb/data-api-migrations'
 
 interface Options extends Serverless.Options {
   name?: string;
