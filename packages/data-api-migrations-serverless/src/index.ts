@@ -97,12 +97,12 @@ class DataAPIMigrationsServerless implements Plugin {
   }
 
   private async applyMigrations (): Promise<void> {
-    const ids = await this.manager().applyMigrations()
+    const ids = await this.manager().applyMigrations(this.serverless)
     ids.forEach((id) => this.log(`${chalk.greenBright(id)} applied.`))
   }
 
   private async rollbackMigrations (): Promise<void> {
-    const ids = await this.manager().rollbackMigrations()
+    const ids = await this.manager().rollbackMigrations(this.serverless)
     ids.forEach((id) => this.log(`${chalk.greenBright(id)} rolled back.`))
   }
 

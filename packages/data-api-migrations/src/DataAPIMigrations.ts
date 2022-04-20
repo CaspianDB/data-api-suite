@@ -70,13 +70,13 @@ export class DataAPIMigrations {
     return result.rows.map((row) => row.id)
   }
 
-  public async applyMigrations (): Promise<string[]> {
+  public async applyMigrations (context?: unknown): Promise<string[]> {
     const [migrations, compiler] = await this.bootstrap()
     const migrationsToRun = migrations.filter((migration) => !migration.isApplied)
     try {
       for (let i = 0; i < migrationsToRun.length; i ++) {
         this.log(`Applying ${migrationsToRun[i].id} - ${migrationsToRun[i].name}`)
-        await migrationsToRun[i].apply()
+        await migrationsToRun[i].apply(context)
       }
       return migrationsToRun.map((migration) => migration.id)
     } finally {
@@ -84,13 +84,13 @@ export class DataAPIMigrations {
     }
   }
 
-  public async rollbackMigrations (): Promise<string[]> {
+  public async rollbackMigrations (context?: unknown): Promise<string[]> {
     const [migrations, compiler] = await this.bootstrap()
     const migrationsToRun = migrations.filter((migration) => migration.isApplied).slice(-1, migrations.length)
     try {
       for (let i = 0; i < migrationsToRun.length; i++) {
         this.log(`Rolling back ${migrationsToRun[i].id} - ${migrationsToRun[i].name}`)
-        await migrationsToRun[i].rollback()
+        await migrationsToRun[i].rollback(context)
       }
       return migrationsToRun.map((migration) => migration.id)
     } finally {

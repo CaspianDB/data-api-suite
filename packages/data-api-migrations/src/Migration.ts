@@ -24,10 +24,10 @@ export class Migration {
     this.dataAPI = dataAPI
   }
 
-  public async apply (): Promise<void> {
+  public async apply (context?: unknown): Promise<void> {
     if (this.isApplied) { return }
     const { up } = await import(this.file)
-    await up(this.dataAPI, this)
+    await up(this.dataAPI, this, context)
     await this.dataAPI.query(
       'INSERT INTO __migrations__ (id) VALUES (:id)',
       { id: this.id },
@@ -35,10 +35,10 @@ export class Migration {
     )
   }
 
-  public async rollback (): Promise<void> {
+  public async rollback (context?: unknown): Promise<void> {
     if (!this.isApplied) { return }
     const { down } = await import(this.file)
-    await down(this.dataAPI, this)
+    await down(this.dataAPI, this, context)
     await this.dataAPI.query(
       'DELETE FROM __migrations__ WHERE id = :id',
       { id: this.id },
