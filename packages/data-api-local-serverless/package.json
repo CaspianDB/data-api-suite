@@ -1,6 +1,6 @@
 {
   "name": "@caspiandb/data-api-local-serverless",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.4",
   "description": "Serverless plugin to start an Aurora Serverless Data API emulator for local development.",
   "homepage": "https://github.com/marcgreenstock/data-api-suite/tree/master/packages/data-api-local-serverless",
   "repository": {
