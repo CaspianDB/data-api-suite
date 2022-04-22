@@ -1,6 +1,6 @@
 {
   "name": "@caspiandb/data-api-local",
-  "version": "1.0.0-alpha.8",
+  "version": "1.0.0-alpha.9",
   "description": "AWS Aurora Serverless Data API emulator for local development.",
   "homepage": "https://github.com/caspiandb/data-api-suite/tree/master/packages/data-api-local",
   "repository": {
