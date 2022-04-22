@@ -89,7 +89,6 @@ export const transformQuery = (
   query: string,
   parameters?: RDSDataService.Types.SqlParameter[]
 ): TransformedQuery => {
-  query = query.split(/;(?=([^"']*"[^"']*")*[^"']*$)/)[0].trim()
   if (parameters === undefined) { return { query } }
   return parameters.reduce(({ query, values }, parameter, index) => {
     if (typeof parameter.name !== 'string' || parameter.name.trim() === '') {

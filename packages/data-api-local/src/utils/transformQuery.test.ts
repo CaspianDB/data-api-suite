@@ -279,3 +279,17 @@ describe('error handeling', () => {
     }
   })
 })
+
+describe('"do" query', () => {
+  test('simple do', () => {
+    const query = `
+      DO $aaa$ BEGIN
+        CREATE USER "user" WITH PASSWORD 'password';
+      END
+      $aaa$`
+    const result = transformQuery(query)
+    expect(result).toMatchObject({
+      query,
+    })
+  })
+});
