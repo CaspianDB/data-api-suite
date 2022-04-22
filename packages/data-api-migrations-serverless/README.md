@@ -1,5 +1,7 @@
 # Data API Migrations Serverless Plugin
 
+[![Master](https://github.com/caspiandb/data-api-suite/workflows/master/badge.svg)](https://github.com/caspiandb/data-api-suite/actions) [![NPM](https://img.shields.io/npm/v/@caspiandb/data-api-migrations-serverless)](https://www.npmjs.com/package/@caspiandb/data-api-migrations-serverless)
+
 ## Summary
 
 A Serverless plugin to **generate**, **apply** and **rollback** migrations on the Data API for Aurora Serverless. Plays nice with the [Data API Local Serverless Plugin](https://github.com/caspiandb/data-api-suite/tree/master/packages/data-api-local-serverless) and [Aurora Data API Client](https://github.com/caspiandb/data-api-suite/tree/master/packages/aurora-data-api).

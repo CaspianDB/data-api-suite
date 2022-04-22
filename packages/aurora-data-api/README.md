@@ -1,6 +1,6 @@
 # Aurora Data API Client
 
-[![Master](https://github.com/caspiandb/data-api-suite/workflows/master/badge.svg)](https://github.com/caspiandb/data-api-suite/actions) [![NPM](https://img.shields.io/npm/v/aurora-data-api.svg)](https://www.npmjs.com/package/aurora-data-api)
+[![Master](https://github.com/caspiandb/data-api-suite/workflows/master/badge.svg)](https://github.com/caspiandb/data-api-suite/actions) [![npm (scoped)](https://img.shields.io/npm/v/@caspiandb/aurora-data-api)](https://www.npmjs.com/package/@caspiandb/aurora-data-api)
 
 ## Summary
 

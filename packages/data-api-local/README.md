@@ -1,6 +1,6 @@
 # Data API Local
 
-[![Master](https://github.com/caspiandb/data-api-suite/workflows/master/badge.svg)](https://github.com/caspiandb/data-api-suite/actions) [![NPM](https://img.shields.io/npm/v/data-api-local.svg)](https://www.npmjs.com/package/data-api-local)
+[![Master](https://github.com/caspiandb/data-api-suite/workflows/master/badge.svg)](https://github.com/caspiandb/data-api-suite/actions) [![NPM](https://img.shields.io/npm/v/@caspiandb/data-api-local)](https://www.npmjs.com/package/@caspiandb/data-api-local)
 
 ## Summary
 

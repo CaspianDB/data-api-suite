@@ -1,6 +1,6 @@
 # Data API Migrations
 
-[![Master](https://github.com/caspiandb/data-api-suite/workflows/master/badge.svg)](https://github.com/caspiandb/data-api-suite/actions) [![NPM](https://img.shields.io/npm/v/data-api-migrations.svg)](https://www.npmjs.com/package/data-api-migrations)
+[![Master](https://github.com/caspiandb/data-api-suite/workflows/master/badge.svg)](https://github.com/caspiandb/data-api-suite/actions) [![NPM](https://img.shields.io/npm/v/@caspiandb/data-api-migrations)](https://www.npmjs.com/package/@caspiandb/data-api-migrations)
 
 ## Sumary
 
