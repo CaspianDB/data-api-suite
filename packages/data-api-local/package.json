@@ -2,14 +2,14 @@
   "name": "@caspiandb/data-api-local",
   "version": "1.0.0-alpha.8",
   "description": "AWS Aurora Serverless Data API emulator for local development.",
-  "homepage": "https://github.com/marcgreenstock/data-api-suite/tree/master/packages/data-api-local",
+  "homepage": "https://github.com/caspiandb/data-api-suite/tree/master/packages/data-api-local",
   "repository": {
     "type": "git",
-    "url": "https://github.com/marcgreenstock/data-api-suite.git",
+    "url": "https://github.com/caspiandb/data-api-suite.git",
     "directory": "packages/data-api-local"
   },
   "bugs": {
-    "url": "https://github.com/marcgreenstock/data-api-suite/issues"
+    "url": "https://github.com/caspiandb/data-api-suite/issues"
   },
   "keywords": [
     "AWS Aurora Serverless Data API",
