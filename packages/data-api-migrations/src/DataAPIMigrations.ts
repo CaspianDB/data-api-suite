@@ -1,7 +1,7 @@
 import * as path from 'path'
 import * as fs from 'fs-extra'
 import * as _ from 'lodash'
-import * as AuroraDataAPI from 'aurora-data-api'
+import * as AuroraDataAPI from '@caspiandb/aurora-data-api'
 import { format as formatDate } from 'date-fns'
 import { jsTemplate, tsTemplate } from './templates'
 import { Migration } from './Migration'

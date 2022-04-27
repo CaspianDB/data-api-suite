@@ -1,4 +1,4 @@
-import * as AuroraDataAPI from 'aurora-data-api'
+import * as AuroraDataAPI from '@caspiandb/aurora-data-api'
 
 export class Migration {
   public readonly id: string
