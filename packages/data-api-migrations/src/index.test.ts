@@ -9,7 +9,7 @@ const now = Date.now()
 Date.now = jest.fn(() => now)
 
 jest.mock('fs-extra')
-jest.mock('aurora-data-api')
+jest.mock('@caspiandb/aurora-data-api')
 
 const tsCompilerMocks = {
   compile: jest.fn().mockResolvedValue([
