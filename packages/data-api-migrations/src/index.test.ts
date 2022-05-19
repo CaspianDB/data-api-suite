@@ -3,12 +3,36 @@ import DataAPIMigrations from '.'
 import * as AuroraDataAPI from 'aurora-data-api'
 import { tsTemplate, jsTemplate } from './templates'
 import { format as formatDate } from 'date-fns'
-import { writeFile } from 'fs-extra'
+import { writeFile, readdir, move } from 'fs-extra'
 
 const now = Date.now()
 Date.now = jest.fn(() => now)
 
-jest.mock('fs-extra')
+beforeAll(() => {
+  jest.useFakeTimers('modern');
+  jest.setSystemTime(now);
+});
+
+afterAll(() => {
+  jest.useRealTimers();
+});
+
+jest.mock('fs-extra', () => {
+  const origFs = jest.requireActual('fs-extra');
+  const mockedFs = Object.keys(origFs).reduce((pre, methodName) => {
+    pre[methodName] = jest.fn();
+    return pre;
+  }, {});
+  return {
+    __esModule: true,
+    ...mockedFs,
+    readdir: jest.fn(() =>
+      Promise.resolve([
+        `${formatDate(now, 'yyyyMMddHHmmss')}_foobar.ts`,
+        `${formatDate(Date.now(), 'yyyyMMddHHmmss')}_barbaz.ts`,
+      ]))
+  }
+})
 jest.mock('@caspiandb/aurora-data-api')
 
 const tsCompilerMocks = {
@@ -54,6 +78,19 @@ describe('DataAPIMigrations#generateMigration', () => {
     const resultPath = await manager.generateMigration('foobar')
     const expectedPath = `${process.cwd()}/migrations/${formatDate(now, 'yyyyMMddHHmmss')}_foobar.js`
     expect(writeFile).toHaveBeenCalledWith(expectedPath, jsTemplate())
+    expect(resultPath).toEqual(expectedPath)
+  })
+})
+
+describe('DataAPIMigrations#bumpMigration', () => {
+  it('bump existing migration', async () => {
+    createManager()
+    await manager.generateMigration('foobar')
+    const resultPath = await manager.bumpMigration('foobar')
+    const expectedPath = `${process.cwd()}/migrations/${formatDate(now, 'yyyyMMddHHmmss')}_foobar.ts`
+    expect(writeFile).toHaveBeenCalledWith(expectedPath, tsTemplate())
+    expect(readdir).toHaveBeenCalledWith(`${process.cwd()}/migrations`)
+    expect(move).toHaveBeenCalledWith(expectedPath, expectedPath)
     expect(resultPath).toEqual(expectedPath)
   })
 })

@@ -21,6 +21,12 @@ export interface DataAPIMigrationsConfig {
   tsConfig?: string;
 }
 
+async function findMigrationFile (dir: string, name: string): Promise<string> {
+  const matcher = new RegExp(`_${name}\\.`)
+  const fileList = [].concat(await fs.readdir(dir)).filter(file => matcher.exec(file)).sort()
+  return fileList.length > 0 ? fileList[fileList.length - 1] : null
+}
+
 export class DataAPIMigrations {
   public readonly cwd: string
   public readonly typescript: boolean
@@ -62,6 +68,18 @@ export class DataAPIMigrations {
     const filePath = path.join(this.migrationsPath, fileName)
     await fs.writeFile(filePath, template())
     return filePath
+  }
+
+  public async bumpMigration (name: string): Promise<string | null> {
+    name = _.camelCase(name)
+    const fileName = await findMigrationFile(this.migrationsPath, name)
+    if (fileName) {
+      const id = formatDate(new Date(), ID_FORMAT)
+      const newFileName = fileName.replace(new RegExp(`\\d+_${name}\\.`), `${id}_${name}.`);
+      await fs.move(path.join(this.migrationsPath, fileName), path.join(this.migrationsPath, newFileName))
+      return path.join(this.migrationsPath, newFileName)
+    }
+    return null
   }
 
   public async getAppliedMigrationIds (): Promise<string[]> {

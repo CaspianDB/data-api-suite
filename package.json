@@ -20,7 +20,7 @@
     "publish": "lerna publish --exact",
     "lint": "eslint **/*.ts",
     "test": "jest",
-    "ci": "npm run start:test:db && jest && stop:test:db",
+    "ci": "npm run start:test:db && jest && npm run stop:test:db",
     "start:test:db": "docker-compose up --build -d",
     "stop:test:db": "docker-compose down"
   }

@@ -49,6 +49,18 @@ class DataAPIMigrationsServerless implements Plugin {
               }
             }
           },
+          bump: {
+            usage: 'Bump migration file version.',
+            lifecycleEvents: ['bump'],
+            options: {
+              name: {
+                usage: 'Name of the migration e.g. sls migration bump --name createUsersTable',
+                required: true,
+                shortcut: 'n',
+                type: 'string,'
+              }
+            }
+          },
           apply: {
             usage: 'Apply all pending migrations.',
             lifecycleEvents,
@@ -76,6 +88,7 @@ class DataAPIMigrationsServerless implements Plugin {
 
     this.hooks = {
       'migrations:create:generate': this.generateMigrationFile.bind(this),
+      'migrations:bump:bump': this.bumpMigrationFile.bind(this),
       'migrations:apply:exec': this.applyMigrations.bind(this),
       'migrations:rollback:exec': this.rollbackMigrations.bind(this),
       'migrations:status:exec': this.fetchMigrationStatus.bind(this)
@@ -94,6 +107,15 @@ class DataAPIMigrationsServerless implements Plugin {
   private async generateMigrationFile (): Promise<void> {
     const fileName = await this.manager().generateMigration(this.options.name)
     this.log(`${chalk.greenBright(fileName)} created.`)
+  }
+
+  private async bumpMigrationFile (): Promise<void> {
+    const fileName = await this.manager().bumpMigration(this.options.name)
+    if (fileName) {
+      this.log(`Migration ${this.options.name} bumped to ${chalk.greenBright(fileName)} .`)
+    } else {
+      throw new Error(`Migration for ${this.options.name}: not found`)
+    }
   }
 
   private async applyMigrations (): Promise<void> {
