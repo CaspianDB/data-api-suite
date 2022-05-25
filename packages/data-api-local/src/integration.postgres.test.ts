@@ -205,7 +205,8 @@ describe('#executeStatement', () => {
         '12345.67'::numeric(10, 2) AS "numericValue",
         'helloWorld'::varchar AS "varcharValue",
         json_build_object('foo', 1, 'bar', 2) as "jsonValue",
-        '2021-01-01'::date AS "dateValue"
+        '2021-01-01'::date AS "dateValue",
+        json_build_array(1,2,'3',4,5) as "jsonArray"
     `)
     expect(result).toMatchObject({
       numberOfRecordsUpdated: 0,
@@ -220,6 +221,7 @@ describe('#executeStatement', () => {
         { stringValue: 'helloWorld' },
         { stringValue: '{"foo":1,"bar":2}' },
         { stringValue: '2021-01-01' },
+        { stringValue: '[1,2,"3",4,5]' }
       ]],
       columnMetadata: [{
         ...metadataDefaults,
@@ -305,6 +307,14 @@ describe('#executeStatement', () => {
         name: 'dateValue',
         label: 'dateValue',
         typeName: 'date'
+      }, {
+        ...metadataDefaults,
+        precision: 2147483647,
+        scale: 0,
+        type: 114,
+        name: 'jsonArray',
+        label: 'jsonArray',
+        typeName: 'json'
       }]
     })
   })
