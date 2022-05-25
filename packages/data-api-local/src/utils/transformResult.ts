@@ -53,6 +53,10 @@ const transformValue = (field: FieldDef, value: unknown): RDSDataService.Types.F
   if (value === null) {
     return { isNull: true }
   } else {
+    // should always serialize JSON(B) into `stringValue`
+    if ([types.builtins.JSON, types.builtins.JSONB].includes(field.dataTypeID)) {
+      return { stringValue: transformStringValue(value) }
+    }
     if (Array.isArray(value)) {
       return { arrayValue: transformArray(field.dataTypeID, value) }
     }
