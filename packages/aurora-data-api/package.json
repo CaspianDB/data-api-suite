@@ -1,6 +1,6 @@
 {
   "name": "@caspiandb/aurora-data-api",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.15",
   "description": "Aurora Serverless Data API Client that simplifies the request and response payloads.",
   "homepage": "https://github.com/caspiandb/data-api-suite/tree/master/packages/aurora-data-api",
   "repository": {

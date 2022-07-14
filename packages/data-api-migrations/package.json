@@ -1,6 +1,6 @@
 {
   "name": "@caspiandb/data-api-migrations",
-  "version": "1.0.0-alpha.13",
+  "version": "1.0.0-alpha.15",
   "description": "Migrations library for Aurora Serverless Data API.",
   "homepage": "https://github.com/caspiandb/data-api-suite/tree/master/packages/data-api-migrations",
   "repository": {
@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@caspiandb/aurora-data-api": "^1.0.0-alpha.10",
+    "@caspiandb/aurora-data-api": "^1.0.0-alpha.15",
     "date-fns": "^2.11.0",
     "fs-extra": "^8.1.0",
     "lodash": "^4.17.15",
