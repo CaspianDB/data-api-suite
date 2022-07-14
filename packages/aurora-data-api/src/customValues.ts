@@ -20,7 +20,7 @@ export class JSONValue implements CustomValue {
 
   public toSqlParameter (): SqlParameter {
     return {
-      typeHint: this.typeHint || 'json',
+      typeHint: this.typeHint || 'JSON',
       value: {
         stringValue: JSON.stringify(this.value)
       }

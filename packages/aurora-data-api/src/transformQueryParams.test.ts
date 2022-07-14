@@ -23,7 +23,7 @@ class SpecialValue implements CustomValue {
 test('SqlParameter', () => {
   const result = transformQueryParams({
     example: {
-      typeHint: 'json',
+      typeHint: 'JSON',
       value: {
         stringValue: '{"foo": "bar"}'
       }
@@ -31,7 +31,7 @@ test('SqlParameter', () => {
   })
   expect(result).toMatchObject([{
     name: 'example',
-    typeHint: 'json',
+    typeHint: 'JSON',
     value: {
       stringValue: '{"foo": "bar"}'
     }
@@ -107,7 +107,7 @@ test('JSONValue', () => {
   })
   expect(result).toMatchObject([{
     name: 'example',
-    typeHint: 'json',
+    typeHint: 'JSON',
     value: {
       stringValue: JSON.stringify(data)
     }
