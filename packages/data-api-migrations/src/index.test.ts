@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import DataAPIMigrations from '.'
-import * as AuroraDataAPI from 'aurora-data-api'
+import * as AuroraDataAPI from '@caspiandb/aurora-data-api'
 import { tsTemplate, jsTemplate } from './templates'
 import { format as formatDate } from 'date-fns'
 import { writeFile, readdir, move } from 'fs-extra'

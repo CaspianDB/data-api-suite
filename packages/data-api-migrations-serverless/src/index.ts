@@ -7,6 +7,7 @@ import DataAPIMigrations, {
 
 interface Options extends Serverless.Options {
   name?: string;
+  count?: number;
 }
 
 class DataAPIMigrationsServerless implements Plugin {
@@ -45,7 +46,7 @@ class DataAPIMigrationsServerless implements Plugin {
                 usage: 'Name of the migration e.g. sls migration create --name createUsersTable',
                 required: true,
                 shortcut: 'n',
-                type: 'string,'
+                type: 'string',
               }
             }
           },
@@ -72,7 +73,13 @@ class DataAPIMigrationsServerless implements Plugin {
             usage: 'Rollback the most recent (applied) migration.',
             lifecycleEvents,
             options: {
-              ...commonOptions
+              ...commonOptions,
+              count: {
+                usage: 'How many migrations to rollback, default: 1',
+                required: false,
+                shortcut: 'c',
+                type: 'number',
+              }
             }
           },
           status: {
@@ -124,7 +131,8 @@ class DataAPIMigrationsServerless implements Plugin {
   }
 
   private async rollbackMigrations (): Promise<void> {
-    const ids = await this.manager().rollbackMigrations(this.serverless)
+    const count = this.options.count || 1;
+    const ids = await this.manager().rollbackMigrations(this.serverless, count)
     ids.forEach((id) => this.log(`${chalk.greenBright(id)} rolled back.`))
   }
 

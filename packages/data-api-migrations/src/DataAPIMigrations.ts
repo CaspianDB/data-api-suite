@@ -102,9 +102,9 @@ export class DataAPIMigrations {
     }
   }
 
-  public async rollbackMigrations (context?: unknown): Promise<string[]> {
+  public async rollbackMigrations (context?: unknown, count?: number): Promise<string[]> {
     const [migrations, compiler] = await this.bootstrap()
-    const migrationsToRun = migrations.filter((migration) => migration.isApplied).slice(-1, migrations.length)
+    const migrationsToRun = migrations.filter((migration) => migration.isApplied).slice(-1 * count, migrations.length)
     try {
       for (let i = 0; i < migrationsToRun.length; i++) {
         this.log(`Rolling back ${migrationsToRun[i].id} - ${migrationsToRun[i].name}`)

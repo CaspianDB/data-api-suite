@@ -135,7 +135,7 @@ describe('migrations:rollback:exec', () => {
   })
 
   it ('calls DataAPIMigrations#rollbackMigrations', async () => {
-    expect(rollbackMigrationsMock).toHaveBeenCalledWith(serverless)
+    expect(rollbackMigrationsMock).toHaveBeenCalledWith(serverless, 1)
   })
 
   it ('logs the output', async () => {
