@@ -1,6 +1,6 @@
 {
   "name": "@caspiandb/data-api-migrations",
-  "version": "1.0.0-alpha.16",
+  "version": "1.0.0-alpha.17",
   "description": "Migrations library for Aurora Serverless Data API.",
   "homepage": "https://github.com/caspiandb/data-api-suite/tree/master/packages/data-api-migrations",
   "repository": {

@@ -1,6 +1,6 @@
 {
   "name": "@caspiandb/data-api-migrations-serverless",
-  "version": "1.0.0-alpha.16",
+  "version": "1.0.0-alpha.17",
   "description": "Serverless plugin to start an Aurora Serverless Data API emulator for local development.",
   "homepage": "https://github.com/caspiandb/data-api-suite/tree/master/packages/data-api-migrations-serverless",
   "repository": {
@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@caspiandb/data-api-migrations": "1.0.0-alpha.16",
+    "@caspiandb/data-api-migrations": "1.0.0-alpha.17",
     "chalk": "^3.0.0"
   },
   "devDependencies": {
