@@ -77,7 +77,7 @@ class DataAPIMigrationsServerless implements Plugin {
               count: {
                 usage: 'How many migrations to rollback, default: 1',
                 required: false,
-                shortcut: 'c',
+                shortcut: 'n',
                 type: 'number',
               }
             }
