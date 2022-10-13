@@ -164,6 +164,18 @@ describe('#executeStatement', () => {
       }
     })
 
+    test('long SQL', async () => {
+      const data = 'a'.repeat(65536)
+      try {
+        await executeSql(`SELECT '${data}'`)
+      } catch (error) {
+        expect(error).toMatchObject({
+          message: 'Number of characters in SQLStatement is longer than 65536',
+          code: 'BadRequestException'
+        })
+      }
+    })
+
     test('unrecognised transaction id', async () => {
       const transactionId = uuid()
       try {

@@ -131,6 +131,9 @@ export class Server {
       if (typeof sqlStatements !== 'string' || sqlStatements.trim() === '') {
         throw createError(400, 'SQL is empty')
       }
+      if (sqlStatements.length > 65536) {
+        throw createError(400, 'Number of characters in SQLStatement is longer than 65536')
+      }
       const client = await this.createClient({ database })
       try {
         this.log(`[executeSql] ${sqlStatements}`)

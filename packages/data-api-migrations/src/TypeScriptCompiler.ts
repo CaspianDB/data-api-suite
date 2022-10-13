@@ -12,7 +12,7 @@ export class TypeScriptCompiler extends Compiler {
       sourceMap: false,
       listEmittedFiles: true
     }
-    const files = 
+    const files =
       (await fs.readdir(this.migrationsPath))
       .map((fileName) => path.join(this.migrationsPath, fileName))
     const program = ts.createProgram(files, options)
@@ -27,8 +27,8 @@ export class TypeScriptCompiler extends Compiler {
 
   private async getTypescriptCompilerOptions (): Promise<ts.CompilerOptions> {
     const configFilePath = path.join(this.cwd, this.tsConfig ? this.tsConfig : 'tsconfig.json');
-    if (fs.pathExists(configFilePath)) {
-      this.logger('Using local tsconfig.json')
+    if (await fs.pathExists(configFilePath)) {
+      this.logger(`Using local tsconfig.json: ${configFilePath}`)
       const configFileText = (await fs.readFile(configFilePath)).toString()
       const result = ts.parseConfigFileTextToJson(configFilePath, configFileText)
       if (result.error) {
