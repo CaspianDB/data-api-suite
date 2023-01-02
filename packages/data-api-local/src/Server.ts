@@ -11,6 +11,7 @@ import {
 
 const DEFAULT_PORT = 8080
 const DEFAULT_HOSTNAME = 'localhost'
+const MAX_REQUEST_BODY = '4mb'
 
 export type engines = 'postgresql'
 
@@ -53,7 +54,7 @@ export class Server {
     this.dbConfig = database
     this.pool = {}
     this.app = express()
-    this.app.use(bodyParser.json())
+    this.app.use(bodyParser.json({ limit: MAX_REQUEST_BODY }))
     this.app.use(this.setRequestId.bind(this))
     this.app.post('/Execute', this.executeStatement.bind(this))
     this.app.post('/BatchExecute', this.batchExecuteStatement.bind(this))
